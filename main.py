@@ -13,7 +13,7 @@ ignore_words = ['and', 'or', 'not', 'which', 'to', 'a', 'hence', 'is']
 final_results = {}
 for sentence in dataframe['English']:
     for word in sentence.split():
-        # Do the next loop case check
+        # Skip and move back to line 15 with the next word
         if word.lower() in ignore_words: continue
 
         for key in categories:
