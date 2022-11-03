@@ -37,8 +37,17 @@ pip3 install <package-name>
 
 - To run the project simply get inside the directory via terminal and run the following command
 
+- If your expected file is not there in the same directory as `main.py`, then please get the full path of the file using `pwd` for **MacOS/Linux** terminal. For **Windows** please use `cd`.
+- Run the command by providing the full path of the file, ending with the file name
+
 ```python
-python3 main.py
+python3 main.py <full-path>/<file_name>
+```
+
+- If you have the expected file in the same directory, then simply add your file name, and it will work with the following command:
+
+```python
+python3 main.py <file-name>
 ```
 
 ## Output

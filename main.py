@@ -1,9 +1,9 @@
 import sys
-import time
 import xlsxwriter
 import pandas as pd
 
-dataframe = pd.read_excel('assets/Sample-Sheet.xlsx')
+user_input_file = sys.argv[1]
+dataframe = pd.read_excel(user_input_file)
 
 categories = { 
     'Random': ['random'],
