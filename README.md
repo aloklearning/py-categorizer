@@ -25,7 +25,7 @@ Please be assured of the following things installed before you try running the p
     - [x] openpyxl
     - [x] xlsxwriter
 
-- Make sure your sheet has a column **English**, or if you do want to look out for some other column, then change the code in the `main.py` file by replacing the word of the column name with **English**.
+- Make sure your sheet has a column **English**, or if you do want to look out for some other column, then change the code in the `main.py` file by replacing the word of the column name with **English**. 
 
 ## Run Project
 
@@ -39,6 +39,17 @@ pip3 install <package-name>
 
 ```python
 python3 main.py
+```
+
+## Output
+
+- On succesfull completion of the task, you will have the file named **Final-Sheet.xlsx** stored in the same directory.
+- You will also see set of interactive messages coming in your terminal like below:
+
+```
+Work in progress. Have some coffee ☕
+Process succss ✓
+Please check the Final-Sheet.xlsx file in your same directory 📁
 ```
 
 ## Links
