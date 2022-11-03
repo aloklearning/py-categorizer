@@ -10,7 +10,7 @@
 
 ## Motivation
 
-This project was a side project which was made to made the life of operation team easier, who were dealing with more than `800 feedbacks` per day, and had to manually read all of it, and categorise, which is a very tiring process.
+This project was a side project which was made to made the life of operation team easier, who were dealing with more than `800 feedbacks` per day, and had to manually read all of it, and categorise, which is indeed a very tiring process.
 
 ## Pre-requisites
 
