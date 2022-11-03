@@ -4,6 +4,10 @@
 - This solves the basic needs and in no way a very advanced version, which can work like Machine Learning project. 
 - This project will keep on improving with given more data in respect of keywords and categories.
 
+## Motivation
+
+This project was a side project which was made to made the life of operation team easier, who were dealing with more than 800 feedbacks per day, and had to manually read all of it, and categorise, which is a tiring process.
+
 ## Pre-requisites
 
 Please be assured of the following things installed before you try running the project
@@ -16,6 +20,8 @@ Please be assured of the following things installed before you try running the p
     - [x] pandas
     - [x] openpyxl
     - [x] xlsxwriter
+
+- Make sure your sheet has a column **English**, or if you do want to look out for some other column, then change the code in the `main.py` file by replacing the word of the column name with **English**.
 
 ## Run Project
 
@@ -33,7 +39,7 @@ python3 main.py
 
 ## Links
 
-- (Pandas)[https://pandas.pydata.org/docs/]
-- (Install Python on Mac)[https://www.youtube.com/watch?v=M323OL6K5vs]
-- (Install Python on Windows)[https://youtu.be/8cAEH1i_5s0]
-- (XLXSWrite Official Documentation)[https://xlsxwriter.readthedocs.io/worksheet.html]
+- [Pandas](https://pandas.pydata.org/docs/)
+- [Install Python on Mac](https://www.youtube.com/watch?v=M323OL6K5vs)
+- [Install Python on Windows](https://youtu.be/8cAEH1i_5s0)
+- [XLXSWrite Official Documentation](https://xlsxwriter.readthedocs.io/worksheet.html)
