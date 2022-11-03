@@ -1,7 +1,7 @@
 import xlsxwriter
 import pandas as pd
 
-dataframe = pd.read_excel('Sample-Sheet.xlsx')
+dataframe = pd.read_excel('assets/Sample-Sheet.xlsx')
 
 categories = { 
     'Random': ['random'],
