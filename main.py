@@ -1,3 +1,5 @@
+import sys
+import time
 import xlsxwriter
 import pandas as pd
 
@@ -11,7 +13,9 @@ ignore_words = ['and', 'or', 'not', 'which', 'to', 'a', 'hence', 'is']
 
 # Business Logic
 final_results = {}
-for sentence in dataframe['English']:
+
+print("Work in progress. Have some coffee", "\N{hot beverage}")
+for index, sentence in enumerate(dataframe['English']):
     for word in sentence.split():
         # Skip and move back to line 15 with the next word
         if word.lower() in ignore_words: continue
@@ -43,5 +47,7 @@ for key in final_results:
     row = 0
     col += 1
 
+print("Process succss", "\N{check mark}")
+print("Please check the Final-Sheet.xlsx file in your same directory", "\N{file folder}")
 workbook.close()
 
