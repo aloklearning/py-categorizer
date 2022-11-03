@@ -48,7 +48,7 @@ python3 main.py
 
 ```
 Work in progress. Have some coffee ☕
-Process succss ✓
+Process success ✓
 Please check the Final-Sheet.xlsx file in your same directory 📁
 ```
 

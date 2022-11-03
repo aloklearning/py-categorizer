@@ -47,7 +47,7 @@ for key in final_results:
     row = 0
     col += 1
 
-print("Process succss", "\N{check mark}")
+print("Process success", "\N{check mark}")
 print("Please check the Final-Sheet.xlsx file in your same directory", "\N{file folder}")
 workbook.close()
 
