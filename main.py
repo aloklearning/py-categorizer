@@ -15,7 +15,7 @@ ignore_words = ['and', 'or', 'not', 'which', 'to', 'a', 'hence', 'is']
 final_results = {}
 
 print("Work in progress. Have some coffee", "\N{hot beverage}")
-for index, sentence in enumerate(dataframe['English']):
+for sentence in dataframe['English']:
     for word in sentence.split():
         # Skip and move back to line 15 with the next word
         if word.lower() in ignore_words: continue
