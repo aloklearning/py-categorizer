@@ -6,10 +6,113 @@ user_input_file = sys.argv[1]
 dataframe = pd.read_excel(user_input_file)
 
 categories = { 
-    'Random': ['random'],
-    'Help': ['impact', 'better']
+    'Bugs': [
+        'terminal', 
+        'error', 
+        'connection', 
+        'pos', 
+        'e-pos', 
+        'card', 
+        'payment', 
+        'website'
+    ],
+    'Customer Ops': [
+        'translation', 
+        'english', 
+        'emails', 
+        'documentation'
+    ],
+    'Customer Support': [
+        'contract', 
+        'communication', 
+        'inactivity', 
+        'service', 
+        'phone', 
+        'email', 
+        'chat', 
+        'customer', 
+        'subscription', 
+        'telphone',
+        'assistance'
+    ],
+    'Generic Negative': ['bad'],
+    'Generic Positive': [
+        'good',
+        'great',
+        'impressive',
+        'reliable',
+        'satisfied',
+        'outstanding',
+        'well',
+        'top',
+        'service',
+        'quick',
+        'excellent',
+        'perfect',
+        'quick',
+        'love',
+        'comfortable',
+        'like',
+        'accessible'
+    ],
+    'New Feature Request': [
+        'rental',
+        'possibility',
+        'offer',
+        'possible', 
+        'elimiate',
+        'installement', 
+        'fractional',
+        'increase',
+        'accept',
+        'payment',
+        'welcome'
+    ],
+    'onboarding': [
+        'password',
+        'terminal', 
+        'interview', 
+        'sales',
+        'representative',
+        'change'
+    ],
+    'Pricing/Billing': [
+        'transaction',
+        'settlement', 
+        'high',
+        'fee',
+        'business', 
+        'rate',
+        'summary',
+        'statement',
+        'report',
+        'price',
+        'service',
+        'percentage',
+        'financial',
+        'money',
+        'commission', 
+        'billing',
+        'delay',
+        'payment',
+        'receipt',
+        'b-online'
+    ],
+    'Usability Issue': [
+        'interface',
+        'slow',
+        'android',
+        'system',
+        'interest',
+        'troubleshoot',
+        'miss',
+        'poor', 
+        'pop-up'
+    ],
+    'Supply Chain': ['order']
 }
-ignore_words = ['and', 'or', 'not', 'which', 'to', 'a', 'hence', 'is']
+
+ignore_words = ['and', 'or', 'not', 'which', 'to', 'a', 'hence', 'is', 'was', 'it', 'with', 'for']
 
 # Business Logic
 final_results = {}
@@ -31,6 +134,10 @@ for sentence in dataframe['English']:
                 if keyword in word.lower():
                     if key in final_results: final_results[key].append(sentence)
                     else: final_results[key] = [sentence]
+                else:
+                    if 'Junk' in final_results: final_results['Junk'].append(sentence)
+                    else: final_results['Junk'] = [sentence]
+
 
 # Final Process
 workbook = xlsxwriter.Workbook('Final-Sheet.xlsx')
