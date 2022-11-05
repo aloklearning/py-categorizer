@@ -137,7 +137,7 @@ for sentence in dataframe['English']:
         dictKey = ''
         found = False
         # Skip and move back to line 15 with the next word
-        if word.lower() not in ignore_words: continue
+        if word.lower() in ignore_words: continue
 
         # TODO: Find a good logic to do search in each category, and if not found
         # then store the sentence in Junk Key, not before that
