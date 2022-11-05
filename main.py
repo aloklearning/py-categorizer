@@ -112,7 +112,21 @@ categories = {
     'Supply Chain': ['order']
 }
 
-ignore_words = ['and', 'or', 'not', 'which', 'to', 'a', 'hence', 'is', 'was', 'it', 'with', 'for']
+ignore_words = [
+    'and', 
+    'or', 
+    'not', 
+    'which', 
+    'to', 
+    'a',
+    'an', 
+    'hence', 
+    'is', 
+    'was', 
+    'it', 
+    'with', 
+    'for'
+]
 
 # Business Logic
 final_results = {}
@@ -120,23 +134,24 @@ final_results = {}
 print("Work in progress. Have some coffee", "\N{hot beverage}")
 for sentence in dataframe['English']:
     for word in sentence.split():
+        dictKey = ''
+        found = False
         # Skip and move back to line 15 with the next word
-        if word.lower() in ignore_words: continue
+        if word.lower() not in ignore_words: continue
 
+        # Find a good logic to do search in each category, and if not found
+        # then store the sentence in Junk Key, not before that
         for key in categories:
-            for keyword in categories[key]: 
-                '''
-                This is for checking substring. For example impacted could be ignored
-                Keyword has to be in present tense which can be found in any grammatical word
-                For example impact (keyword) can be found in impacted (word from excel) and not
-                the other way round. 
-                '''
-                if keyword in word.lower():
-                    if key in final_results: final_results[key].append(sentence)
-                    else: final_results[key] = [sentence]
-                else:
-                    if 'Junk' in final_results: final_results['Junk'].append(sentence)
-                    else: final_results['Junk'] = [sentence]
+            dictKey = key
+            for keywords in categories[key]:
+                for keyword in keywords:
+                    '''
+                    For substring match. A word in a sentence can be of any type.
+                    Key word is in the present, so it has to be in the word. For
+                    example: Slow (substring) should be there in Slowly
+                    '''
+                    if keyword in word.lower(): found = True
+        
 
 
 # Final Process
