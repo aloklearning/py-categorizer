@@ -185,6 +185,9 @@ for category_key in categories:
 workbook = xlsxwriter.Workbook('Final-Sheet.xlsx')
 worksheet = workbook.add_worksheet()
 
+text_wrap_format = workbook.add_format({'text_wrap': True})
+worksheet.set_column('A:Z', 50, text_wrap_format)
+
 row = 0
 col = 0
 
