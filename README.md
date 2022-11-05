@@ -57,9 +57,59 @@ python3 main.py <file-name>
 
 ```
 Work in progress. Have some coffee ☕
-Process success ✓
+Processing 129 feedbacks...
+Process success ✅
+We've successfully categorised 129 feedbacks from the provided sheet 🙂
 Please check the Final-Sheet.xlsx file in your same directory 📁
 ```
+
+- This output will come in your terminal/console, when the machine was not able to find any words which was matching a category, hence, the category was not added.
+
+```
+We were unable to add these categories due to other categories priority precedence: 
+Generic Negative
+Supply Chain
+```
+
+## Future Prospects
+
+Should you require to add more categories, for the machine to give a more robust output. You just need go to your `main.py` file, and do the following:
+- If new words need to be added to an existing category:
+    - Go to the `categories` word, and inside the existing category, add another word like below:
+    
+    ```python
+    categories = {
+        'existing_category': [
+            'your_new_word', 
+            'some_existing_words'
+            ...
+        ]
+        ...
+    }
+    ```
+
+- If a new category with new words has to be added:
+    - It is something like above only, just add the category with word on top, or may be down. 
+    > **Please Note:** The sequence does matter, so if you're category is important, and it's words has to be checked first, add it on top, otherwise, at the bottom
+
+    ```python
+    categories = {
+        'your_new_category': [
+            'your_new_word', 
+            'your_new_word_2'
+            ...
+        ],
+        'existing_category': [
+            'your_new_word', 
+            'some_existing_words'
+            ...
+        ]
+        ...
+    }
+    ```
+
+Run the project, if everything goes well, you will be able to see the results in a form of final sheet in your directory. Enjoy!
+
 
 ## Links
 
