@@ -19,8 +19,8 @@ categories = {
     'Customer Ops': [
         'translation', 
         'english', 
-        'emails', 
-        'documentation'
+        'email', 
+        'document'
     ],
     'Customer Support': [
         'contract', 
@@ -68,7 +68,7 @@ categories = {
         'payment',
         'welcome'
     ],
-    'onboarding': [
+    'Onboarding': [
         'password',
         'terminal', 
         'interview', 
@@ -129,30 +129,54 @@ ignore_words = [
 ]
 
 # Business Logic
+keyJunk = 'Junk'
 final_results = {}
 
 print("Work in progress. Have some coffee", "\N{hot beverage}")
+print(f"Processing {len(dataframe['English'])} feedbacks...")
 for sentence in dataframe['English']:
+    found = False
+    sentence = sentence.strip()
+
     for word in sentence.split():
-        dictKey = ''
-        found = False
         # Skip and move back to line 15 with the next word
         if word.lower() in ignore_words: continue
 
-        # TODO: Find a good logic to do search in each category, and if not found
-        # then store the sentence in Junk Key, not before that
         for key in categories:
-            dictKey = key
-            for keywords in categories[key]:
-                for keyword in keywords:
-                    '''
-                    For substring match. A word in a sentence can be of any type.
-                    Key word is in the present, so it has to be in the word. For
-                    example: Slow (substring) should be there in Slowly
-                    '''
-                    if keyword in word.lower(): found = True
-        
+            for keyword in categories[key]:
+                '''
+                For substring match. A word in a sentence can be of any type.
+                Key word is in the present, so it has to be in the word. For
+                example: Slow (substring) should be there in Slowly
+                '''
+                if keyword in word.lower():
+                    found = True
+                    if key in final_results:
+                        final_results[key].append(sentence)
+                    else:
+                        final_results[key] = [sentence]
+                    break
+            # Main idea is to push the sentence and move to next sentence immediately
+            if found: break
+        # Breaks word loop
+        if found: break
 
+    # Pushing to junk. No word in sentence found in any category
+    if not found:
+        if keyJunk in final_results:
+            final_results[keyJunk].append(sentence)
+        else:
+            final_results[keyJunk] = [sentence]
+
+processed_count = 0                  
+for key in final_results:
+    processed_count += len(final_results[key])
+
+missing_categories = []
+for category_key in categories:
+    if category_key not in final_results:
+         if category_key not in missing_categories: 
+            missing_categories.append(category_key)
 
 # Final Process
 workbook = xlsxwriter.Workbook('Final-Sheet.xlsx')
@@ -169,7 +193,13 @@ for key in final_results:
     row = 0
     col += 1
 
-print("Process success", "\N{check mark}")
-print("Please check the Final-Sheet.xlsx file in your same directory", "\N{file folder}")
+print("Process success ✅")
+print(f"We've successfully categorised {processed_count} feedbacks from the provided sheet 🙂")
+
+if len(missing_categories) > 1:
+    missing_categories = '\n'.join(missing_categories)
+    print(f'\nWe were unable to add these categories due to other categories priority precedence: \n{missing_categories}\n')
+
+print("Please check the Final-Sheet.xlsx file in your same directory 📁")
 workbook.close()
 
