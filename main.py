@@ -137,11 +137,11 @@ final_results = {}
 
 print("Work in progress. Have some coffee", "\N{hot beverage}")
 print(f"Processing {len(dataframe['English'])} feedbacks...")
-for sentence in dataframe['English']:
+for feedback in dataframe['English']:
     found = False
-    sentence = sentence.strip()
+    feedback = feedback.strip()
 
-    for word in sentence.split():
+    for word in feedback.split():
         # Skip and move back to line 15 with the next word
         if word.lower() in ignore_words: continue
 
@@ -155,9 +155,9 @@ for sentence in dataframe['English']:
                 if keyword in word.lower():
                     found = True
                     if key in final_results:
-                        final_results[key].append(sentence)
+                        final_results[key].append(feedback)
                     else:
-                        final_results[key] = [sentence]
+                        final_results[key] = [feedback]
                     break
             # Main idea is to push the sentence and move to next sentence immediately
             if found: break
@@ -167,9 +167,9 @@ for sentence in dataframe['English']:
     # Pushing to junk. No word in sentence found in any category
     if not found:
         if keyJunk in final_results:
-            final_results[keyJunk].append(sentence)
+            final_results[keyJunk].append(feedback)
         else:
-            final_results[keyJunk] = [sentence]
+            final_results[keyJunk] = [feedback]
 
 processed_count = 0                  
 for key in final_results:
