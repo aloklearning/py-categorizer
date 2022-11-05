@@ -125,7 +125,10 @@ ignore_words = [
     'was', 
     'it', 
     'with', 
-    'for'
+    'for',
+    'of',
+    'it',
+    'have'
 ]
 
 # Business Logic
