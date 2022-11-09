@@ -86,9 +86,9 @@ Please check the Final-Sheet.xlsx file in <your_provided_path> directory 📁
 ```
 
 ### Running Executable File
-This file will take few seconds to run, as it installs everything at your disposal, and help you get the results
+- This file will take few seconds to run, as it installs everything at your disposal, and help you get the results
 
-- This output will come in your terminal/console, when the machine was not able to find any words which was matching a category, hence, the category was not added.
+> This output will come in your terminal/console, when the machine was not able to find any words which was matching a category, hence, the category was not added. This is irrespetive of which path you choose to run the project
 
 ```
 We were unable to add these categories due to other categories priority precedence: 
