@@ -1,8 +1,8 @@
-import sys
 import xlsxwriter
 import pandas as pd
 
 user_input_file = input("Please enter the full path of the file along with an xlsx extension: ")
+save_file_path = input("Please enter the full path where you want to save the result sheet: ")
 dataframe = pd.read_excel(user_input_file)
 
 categories = { 
@@ -182,7 +182,7 @@ for category_key in categories:
             missing_categories.append(category_key)
 
 # Final Process
-workbook = xlsxwriter.Workbook('Final-Sheet.xlsx')
+workbook = xlsxwriter.Workbook(f'{save_file_path}/Final-Sheet.xlsx')
 worksheet = workbook.add_worksheet()
 
 text_wrap_format = workbook.add_format({'text_wrap': True})
