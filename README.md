@@ -33,6 +33,7 @@ Please be assured of the following things installed before you try running the p
 - In order to make your main file executable, please install the package `pyinstaller`. There would be an absolute chances, that even after the command `pip3 install pyinstaller`, you will be seeing a problem as `pyinstaller command not found`. No worries, in order make things work, just do the following:
 
 ```
+# If you don't have pyinstaller installed, then run the pyinstaller installation command, else skip to second
 pip3 install pyinstaller
 python3 -m PyInstaller --onefile main.py
 ```
