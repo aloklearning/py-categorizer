@@ -206,6 +206,6 @@ if len(missing_categories) > 1:
     missing_categories = '\n'.join(missing_categories)
     print(f'\nWe were unable to add these categories due to other categories priority precedence: \n{missing_categories}\n')
 
-print("Please check the Final-Sheet.xlsx file in your same directory 📁")
+print(f"Please check the Final-Sheet.xlsx file in {save_file_path} directory 📁")
 workbook.close()
 

@@ -40,8 +40,18 @@ python3 -m PyInstaller --onefile main.py
 - This will generate an executable file for the **MacOS**, and I think it can work on **Windows** as well, but **not tested**
 - Just go to the `dist` directory, and double click the executable file, and it will run as usual
 
+> Please keep on running the above command with each update in the `main.py` file.
+
 ## Run Project
 
+When you will the run the project, irrespective of the below cases, you will be asked the below questions. Please provide the right details, failing which, the program will exit it abruptly.
+
+```terminal
+Please enter the full path of the file along with an xlsx extension: <your_input>
+Please enter the full path where you want to save the result sheet: <your_input>
+```
+
+### Normal Run Via Main.Py
 - To install the packages in python, we use `pip/pip3`. Make sure it is installed and then you just use the below command to install the packages
 
 ```python
@@ -54,18 +64,17 @@ pip3 install <package-name>
 - Run the command by providing the full path of the file, ending with the file name
 
 ```python
-python3 main.py <full-path>/<file_name>
+python3 main.py
 ```
 
-- If you have the expected file in the same directory, then simply add your file name, and it will work with the following command:
+### Run Via Executable File
 
-```python
-python3 main.py <file-name>
-```
+- Double click on the provided executable file, and provide the details required to perform the operation
 
 ## Output
 
-- On succesfull completion of the task, you will have the file named **Final-Sheet.xlsx** stored in the same directory.
+### Running Normally python3 main.py
+- On succesfull completion of the task, you will have the file named **Final-Sheet.xlsx** stored in the provided path
 - You will also see set of interactive messages coming in your terminal like below:
 
 ```
@@ -73,8 +82,11 @@ Work in progress. Have some coffee ☕
 Processing 129 feedbacks...
 Process success ✅
 We've successfully categorised 129 feedbacks from the provided sheet 🙂
-Please check the Final-Sheet.xlsx file in your same directory 📁
+Please check the Final-Sheet.xlsx file in <your_provided_path> directory 📁
 ```
+
+### Running Executable File
+This file will take few seconds to run, as it installs everything at your disposal, and help you get the results
 
 - This output will come in your terminal/console, when the machine was not able to find any words which was matching a category, hence, the category was not added.
 
