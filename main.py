@@ -2,7 +2,7 @@ import sys
 import xlsxwriter
 import pandas as pd
 
-user_input_file = sys.argv[1]
+user_input_file = input("Please enter the full path of the file along with an xlsx extension: ")
 dataframe = pd.read_excel(user_input_file)
 
 categories = { 

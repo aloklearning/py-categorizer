@@ -18,6 +18,7 @@ Please be assured of the following things installed before you try running the p
 
 - Language Dependency
     - [x] Python3.x
+    - [x] Pyinstaller (To make the file executable)
 
 - Packages Dependencies
     - [x] xlrd
@@ -26,6 +27,18 @@ Please be assured of the following things installed before you try running the p
     - [x] xlsxwriter
 
 - Make sure your sheet has a column **English**, or if you do want to look out for some other column, then change the code in the `main.py` file by replacing the word of the column name with **English**. 
+
+## To make the project executable
+
+- In order to make your main file executable, please install the package `pyinstaller`. There would be an absolute chances, that even after the command `pip3 install pyinstaller`, you will be seeing a problem as `pyinstaller command not found`. No worries, in order make things work, just do the following:
+
+```
+pip3 install pyinstaller
+python3 -m PyInstaller --onefile main.py
+```
+
+- This will generate an executable file for the **MacOS**, and I think it can work on **Windows** as well, but **not tested**
+- Just go to the `dist` directory, and double click the executable file, and it will run as usual
 
 ## Run Project
 
