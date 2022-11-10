@@ -1,6 +1,7 @@
 #project
 dist
 build
+assets
 .DS_Store
 main.spec
 Final-Sheet.xlsx
