@@ -6,40 +6,52 @@ save_file_path = input("Please enter the full path where you want to save the re
 dataframe = pd.read_excel(user_input_file)
 
 categories = { 
-    'Bugs': [
-        'terminal', 
-        'error', 
-        'connection', 
-        'pos', 
-        'e-pos', 
-        'card', 
+    'Software Issue': [
+        'Terminal', 
+        'Error', 
+        'Connection', 
+        'POS',
+        'authentification',  
+        'card',  
+        'Website', 
+        'problem', 
+        'refuse', 
+        'technical',
+        'acceptance', 
         'payment', 
-        'website'
+        'trouble', 
+        'fail', 
+        'freeze', 
+        'EPOS'
     ],
-    'Customer Ops': [
-        'translation', 
-        'english', 
-        'email', 
-        'document'
+    'Service Related': [
+        'Contract',
+        'Communication', 
+        'Inactivity', 
+        'Service', 
+        'Phone', 
+        'Email', 
+        'Chat', 
+        'reponse',
+        'Subscription', 
+        'Telphone', 
+        'Assistance', 
+        'transparency', 
+        'password', 
+        'change',
+        'reaction',
+        'information', 
+        'questionnaire' 
     ],
-    'Customer Support': [
-        'contract', 
-        'communication', 
-        'inactivity', 
-        'service', 
-        'phone', 
-        'email', 
-        'chat', 
-        'customer', 
-        'subscription', 
-        'telphone',
-        'assistance'
+    'Generic Negative': [
+        'Bad', 
+        'Reliability', 
+        'leave' 
     ],
-    'Generic Negative': ['bad'],
     'Generic Positive': [
         'good',
         'great',
-        'impressive',
+        'impress',
         'reliable',
         'satisfied',
         'outstanding',
@@ -52,68 +64,61 @@ categories = {
         'quick',
         'love',
         'comfortable',
-        'like',
-        'accessible'
+        'ok',
+        'accessible',
+        'cheaper', 
+        'super',
+        'convenient', 
+        'smooth',
+        'effective', 
+        'pleased',
+        'clear' 
     ],
-    'New Feature Request': [
-        'rental',
-        'possibility',
-        'offer',
-        'possible', 
-        'elimiate',
-        'installement', 
-        'fractional',
-        'increase',
-        'accept',
-        'payment',
-        'welcome'
+    'Product Related': [
+        'Installement',
+        'Possibility',
+        'Offer',
+        'Possible', 
+        'Elimiate',
+        'Smaller', 
+        'Fractional', 
+        'Increase',
+        'Accept', 
+        'Welcome'
     ],
-    'Onboarding': [
-        'password',
-        'terminal', 
-        'interview', 
-        'sales',
-        'representative',
-        'change'
+    'Market Related': [
+        'lower', 
+        'fee', 
+        'charge', 
+        'cost', 
+        'raise', 
+        'rental', 
+        'price', 
+        'high', 
+        'deduce', 
+        'reduce',
+        'lease', 
+        'rates'
     ],
-    'Pricing/Billing': [
-        'transaction',
+    'Settlement': [
+        'month', 
+        'report', 
+        'value', 
         'settlement', 
-        'high',
-        'fee',
-        'business', 
-        'rate',
-        'summary',
-        'statement',
-        'report',
-        'price',
-        'service',
-        'percentage',
-        'financial',
-        'money',
-        'commission', 
-        'billing',
-        'delay',
-        'payment',
-        'receipt',
-        'b-online'
-    ],
-    'Usability Issue': [
-        'interface',
-        'slow',
-        'android',
-        'system',
-        'interest',
-        'troubleshoot',
-        'miss',
-        'poor', 
-        'pop-up'
-    ],
-    'Supply Chain': ['order']
+        'daily', 
+        'transaction', 
+        'summary', 
+        'statement', 
+        'financial', 
+        'deposit', 
+        'money', 
+        'percentage', 
+        'money', 
+        'data' 
+    ]
 }
 
 ignore_words = [
-    'and', 
     'or', 
     'not', 
     'which', 
@@ -139,6 +144,9 @@ print("Work in progress. Have some coffee", "\N{hot beverage}")
 print(f"Processing {len(dataframe['English'])} feedbacks...")
 for feedback in dataframe['English']:
     found = False
+
+    # Project fails when we have something other than string 
+    feedback = str(feedback)
     feedback = feedback.strip()
 
     for word in feedback.split():
@@ -148,11 +156,13 @@ for feedback in dataframe['English']:
         for key in categories:
             for keyword in categories[key]:
                 '''
+                keyword.lower() and word.lower() removes the hassle of comparing issues
+
                 For substring match. A word in a sentence can be of any type.
                 Key word is in the present, so it has to be in the word. For
                 example: Slow (substring) should be there in Slowly
                 '''
-                if keyword in word.lower():
+                if keyword.lower() in word.lower():
                     found = True
                     if key in final_results:
                         final_results[key].append(feedback)
@@ -202,7 +212,7 @@ for key in final_results:
 print("Process success ✅")
 print(f"We've successfully categorised {processed_count} feedbacks from the provided sheet 🙂")
 
-if len(missing_categories) > 1:
+if len(missing_categories) > 0:
     missing_categories = '\n'.join(missing_categories)
     print(f'\nWe were unable to add these categories due to other categories priority precedence: \n{missing_categories}\n')
 
