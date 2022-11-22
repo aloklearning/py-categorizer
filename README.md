@@ -49,7 +49,7 @@ python3 -m PyInstaller --onefile main.py
 When you will the run the project, irrespective of the below cases, you will be asked the below questions. Please provide the right details, failing which, the program will exit it abruptly.
 
 ```terminal
-Do you need the resultant sheet with duplicate record solution (Y/N): <your_input>
+Do you need the resultant sheet with duplicate records solution (Y/N): <your_input>
 Please enter the full path of the file along with an xlsx extension: <your_input>
 Please enter the full path where you want to save the result sheet: <your_input>
 ```

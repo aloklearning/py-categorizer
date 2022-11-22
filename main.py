@@ -268,7 +268,7 @@ def process_input_data(trigger):
         duplicate_entry_category(dataframe, save_file_path)
 
 # Program starts here
-user_input_option = input("Do you need the resultant sheet with duplicate record solution (Y/N): ")
+user_input_option = input("Do you need the resultant sheet with duplicate records solution (Y/N): ")
 
 # We immediately want to exit the system, without asking any further question, if the answer is other than Y or N
 if user_input_option.lower().strip() == "y":
