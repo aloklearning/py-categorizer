@@ -5,6 +5,7 @@
 [![build](https://img.shields.io/appveyor/build/gruntjs/grunt)](https://pub.dev/packages/flutter_bounce#-analysis-tab-)
 
 - This project is a scripting project which is made to automate the process of categorising different sets of feedbacks we receive from people.
+- The project can either store unique feedbacks per category or can have same feedbacks in multiple categories based upon the relevant keywords satisfying different categories.
 - This solves the basic needs and in no way a very advanced version, which can work like Machine Learning project. 
 - This project will keep on improving with given more data in respect of keywords and categories.
 
@@ -48,6 +49,7 @@ python3 -m PyInstaller --onefile main.py
 When you will the run the project, irrespective of the below cases, you will be asked the below questions. Please provide the right details, failing which, the program will exit it abruptly.
 
 ```terminal
+Do you need the resultant sheet with duplicate record solution (Y/N): <your_input>
 Please enter the full path of the file along with an xlsx extension: <your_input>
 Please enter the full path where you want to save the result sheet: <your_input>
 ```
