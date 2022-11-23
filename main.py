@@ -272,9 +272,9 @@ user_input_option = input("Do you need the resultant sheet with duplicate record
 
 # We immediately want to exit the system, without asking any further question, if the answer is other than Y or N
 if user_input_option.lower().strip() == "y":
-    process_input_data("trigger_unique")
-elif user_input_option.lower().strip() == "n":
     process_input_data("trigger_duplicate")
+elif user_input_option.lower().strip() == "n":
+    process_input_data("trigger_unique")
 else:
     print("You have entered an invalid input, please enter either Y or N to get the results")
 
