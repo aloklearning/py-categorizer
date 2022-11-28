@@ -1,139 +1,9 @@
 import xlsxwriter
+import categories
 import pandas as pd
 
 # Global Variables
 keyJunk = 'Junk'
-
-categories = { 
-    'Software Issue': [
-        'Terminal', 
-        'Error', 
-        'Connection', 
-        'POS',
-        'authentification',  
-        'card',  
-        'Website', 
-        'problem', 
-        'refuse', 
-        'technical',
-        'acceptance', 
-        'payment', 
-        'trouble', 
-        'fail', 
-        'freeze', 
-        'EPOS'
-    ],
-    'Service Related': [
-        'Contract',
-        'Communication', 
-        'Inactivity', 
-        'Service', 
-        'Phone', 
-        'Email', 
-        'Chat', 
-        'reponse',
-        'Subscription', 
-        'Telphone', 
-        'Assistance', 
-        'transparency', 
-        'password', 
-        'change',
-        'reaction',
-        'information', 
-        'questionnaire' 
-    ],
-    'Generic Negative': [
-        'Bad', 
-        'Reliability', 
-        'leave' 
-    ],
-    'Generic Positive': [
-        'good',
-        'great',
-        'impress',
-        'reliable',
-        'satisfied',
-        'outstanding',
-        'well',
-        'top',
-        'service',
-        'quick',
-        'excellent',
-        'perfect',
-        'quick',
-        'love',
-        'comfortable',
-        'ok',
-        'accessible',
-        'cheaper', 
-        'super',
-        'convenient', 
-        'smooth',
-        'effective', 
-        'pleased',
-        'clear' 
-    ],
-    'Product Related': [
-        'Installement',
-        'Possibility',
-        'Offer',
-        'Possible', 
-        'Elimiate',
-        'Smaller', 
-        'Fractional', 
-        'Increase',
-        'Accept', 
-        'Welcome'
-    ],
-    'Market Related': [
-        'lower', 
-        'fee', 
-        'charge', 
-        'cost', 
-        'raise', 
-        'rental', 
-        'price', 
-        'high', 
-        'deduce', 
-        'reduce',
-        'lease', 
-        'rates'
-    ],
-    'Settlement': [
-        'month', 
-        'report', 
-        'value', 
-        'settlement', 
-        'daily', 
-        'transaction', 
-        'summary', 
-        'statement', 
-        'financial', 
-        'deposit', 
-        'money', 
-        'percentage', 
-        'money', 
-        'data' 
-    ]
-}
-
-ignore_words = [
-    'or', 
-    'not', 
-    'which', 
-    'to', 
-    'a',
-    'an', 
-    'hence', 
-    'is', 
-    'was', 
-    'it', 
-    'with', 
-    'for',
-    'of',
-    'it',
-    'have'
-]
 
 def writing_result_excel(final_results, missing_categories, processed_count, save_file_path):
     # Final Process
@@ -166,7 +36,7 @@ def writing_result_excel(final_results, missing_categories, processed_count, sav
 
 def compute_missing_categories(final_results, processed_count, save_file_path):
     missing_categories = []
-    for category_key in categories:
+    for category_key in categories.categories:
         if category_key not in final_results:
             if category_key not in missing_categories: 
                 missing_categories.append(category_key)
@@ -191,10 +61,10 @@ def unique_entry_category(dataframe, save_file_path):
 
         for word in feedback.split():
             # Skip and move back to line 15 with the next word
-            if word.lower() in ignore_words: continue
+            if word.lower() in categories.ignore_words: continue
 
-            for key in categories:
-                for keyword in categories[key]:
+            for key in categories.categories:
+                for keyword in categories.categories[key]:
                     '''
                     keyword.lower() and word.lower() removes the hassle of comparing issues
 
@@ -233,10 +103,10 @@ def duplicate_entry_category(dataframe, save_file_path):
         feedback = feedback.strip()
 
         for word in feedback.split():
-            if word.lower() in ignore_words: continue
+            if word.lower() in categories.ignore_words: continue
 
-            for key in categories:
-                for keyword in categories[key]:
+            for key in categories.categories:
+                for keyword in categories.categories[key]:
                     if keyword.lower() in word.lower():
                         found = True
                         if key in duplicate_final_results:
