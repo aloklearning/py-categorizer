@@ -170,7 +170,7 @@ Here is the summary of the items we have per each category:
 2. Junk has 108 items
 ....
 
-Please check the Final-Data.json file in /Users/alok.kumar/Documents/py-categorizer directory 📁
+Please check the Final-Data.json file in <your_provided_path> directory 📁
 ```
 
 ### Running Executable File
