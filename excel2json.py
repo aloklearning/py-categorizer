@@ -55,7 +55,7 @@ def write_data_to_json(final_data_object, processed_count, save_file_path):
     print("Here is the summary of the items we have per each category:\n")
     for index, categoryKey in enumerate(final_data_object):
         total_count = 0
-        
+
         for type_values in final_data_object[categoryKey].values():
             total_count += len(type_values)
         print(f"{index+1}. {categoryKey} has {total_count} items", end="\n")
@@ -70,6 +70,30 @@ def count_processed_data(final_data, save_file_path):
 
     write_data_to_json(final_data, processed_count, save_file_path)
     
+def processing_final_object(key_name, category_item, current_row_data, categories_object):
+    # Filling the object data and then adding it to the final object
+    category_item["rating"] = current_row_data[2]
+    category_item["feedback"] = current_row_data[4].replace("\n", " ")
+    category_item["method"] = current_row_data[5]
+    category_item["user_country_code"] = current_row_data[11]
+    category_item["user_name"] = current_row_data[15]
+    category_item["user_email"] = current_row_data[16]
+
+    if category_item["rating"] >= 9 and category_item["rating"] <= 10: 
+        category_type = "promoters"
+    elif category_item["rating"] >= 7 and category_item["rating"] <= 8: 
+        category_type = "passive"
+    else:
+        category_type = "detractors"
+    
+    if key_name in categories_object:
+        if category_type in categories_object[key_name]:
+            if category_item not in categories_object[key_name][category_type]:
+                categories_object[key_name][category_type].append(category_item)
+        else:
+            categories_object[key_name][category_type] = [category_item]
+    else:
+        categories_object[key_name] = {category_type: [category_item]}
 
 def process_unique_entry(array_data, save_file_path):
     categories_object = {}
@@ -94,30 +118,8 @@ def process_unique_entry(array_data, save_file_path):
                 for keyword in categories.categories[key]:
                     if keyword.lower() in word.lower():
                         found = True
-
-                        # Filling the object data and then adding it to the final object
-                        category_item["rating"] = current_row_data[2]
-                        category_item["feedback"] = current_row_data[4].replace("\n", " ")
-                        category_item["method"] = current_row_data[5]
-                        category_item["user_country_code"] = current_row_data[11]
-                        category_item["user_name"] = current_row_data[15]
-                        category_item["user_email"] = current_row_data[16]
-
-                        if category_item["rating"] >= 9 and category_item["rating"] <= 10: 
-                            category_type = "promoters"
-                        elif category_item["rating"] >= 7 and category_item["rating"] <= 8: 
-                            category_type = "passive"
-                        else:
-                            category_type = "detractors"
-
-                        if key in categories_object:
-                            if category_type in categories_object[key]:
-                                if category_item not in categories_object[key][category_type]:
-                                    categories_object[key][category_type].append(category_item)
-                            else:
-                                categories_object[key][category_type] = [category_item]
-                        else:
-                            categories_object[key] = {category_type: [category_item]}
+                        processing_final_object(key, category_item, current_row_data, categories_object)
+                        
                         break
                 # Main idea is to push the sentence and move to next sentence immediately
                 if found: break
@@ -126,29 +128,7 @@ def process_unique_entry(array_data, save_file_path):
 
         # Pushing to junk. No word in sentence found in any category
         if not found:
-            # Filling the object data and then adding it to the final object
-            category_item["rating"] = current_row_data[2]
-            category_item["feedback"] = current_row_data[4].replace("\n", " ")
-            category_item["method"] = current_row_data[5]
-            category_item["user_country_code"] = current_row_data[11]
-            category_item["user_name"] = current_row_data[15]
-            category_item["user_email"] = current_row_data[16]
-
-            if category_item["rating"] >= 9 and category_item["rating"] <= 10: 
-                category_type = "promoters"
-            elif category_item["rating"] >= 7 and category_item["rating"] <= 8: 
-                category_type = "passive"
-            else:
-                category_type = "detractors"
-            
-            if key_junk in categories_object:
-                if category_type in categories_object[key_junk]:
-                    if category_item not in categories_object[key_junk][category_type]:
-                        categories_object[key_junk][category_type].append(category_item)
-                else:
-                    categories_object[key_junk][category_type] = [category_item]
-            else:
-                categories_object[key_junk] = {category_type: [category_item]}
+            processing_final_object(key_junk, category_item, current_row_data, categories_object)
 
     count_processed_data(categories_object, save_file_path)
 
