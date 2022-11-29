@@ -20,7 +20,6 @@ stored in the JSON file with a format like this
 '''
 import json
 import categories
-import numpy as np
 import pandas as pd
 
 data_frame = pd.read_excel('assets/Sample-Sheet.xlsx', engine='openpyxl', dtype=object, header=None)
