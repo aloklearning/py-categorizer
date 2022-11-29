@@ -36,7 +36,7 @@ Please be assured of the following things installed before you try running the p
 ```python
 # If you don't have pyinstaller installed, then run the pyinstaller installation command, else skip to second
 pip3 install pyinstaller
-python3 -m PyInstaller --onefile main.py
+python3 -m PyInstaller --onefile <file_name>.py
 ```
 
 - This will generate an executable file for the **MacOS**, and I think it can work on **Windows** as well, but **not tested**
@@ -166,6 +166,7 @@ Supply Chain
 
 ### Excel to JSON
 
+**Running Normally python3 excel2json.py**
 - On succesfull completion of the task, you will have the file named **Final-Data.json** stored in the provided path
 - You will also see set of interactive messages coming in your terminal like below:
 
