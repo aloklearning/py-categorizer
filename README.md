@@ -157,6 +157,7 @@ Supply Chain
 ### Excel to JSON
 
 - On succesfull completion of the task, you will have the file named **Final-Data.json** stored in the provided path
+- To best utilise the potential of the program, make sure your columns are in an absolute sequence harmony per different files. Else, you will get varied outputs in the key present inside the above shown output.
 - You will also see set of interactive messages coming in your terminal like below:
 
 ```
