@@ -2,7 +2,7 @@
 dist
 build
 assets
+*.spec
 .DS_Store
-main.spec
 Final-Data.json
 Final-Sheet.xlsx
