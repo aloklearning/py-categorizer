@@ -104,12 +104,14 @@ Please enter the full path where you want to save the result sheet: <your_input>
 - When you will the run the project, irrespective of the below cases, you will be asked the below questions. Please provide the right details, failing which, the program will exit it abruptly.
 - To best utilise the potential of the program, make sure your columns are in an absolute sequence harmony per different files. Else, you will get varied outputs in the key present inside the above shown output. Especially:
 
-> **rating** should be present in **Column C** of the provided sheet
-> **English** should be present in **Column E** of the provided sheet
-> **method** should be present in **Column F** of the provided sheet
-> **country** should be present in **Column L** of the provided sheet
-> **user.name** should be present in **Column P** of the provided sheet
-> **user.email** should be present in **Column Q** of the provided sheet
+```
+1. **rating** should be present in **Column C** of the provided sheet
+2. **English** should be present in **Column E** of the provided sheet
+3. **method** should be present in **Column F** of the provided sheet
+4. **country** should be present in **Column L** of the provided sheet
+5. **user.name** should be present in **Column P** of the provided sheet
+6. **user.email** should be present in **Column Q** of the provided sheet
+```
 
 ```terminal
 Please enter the full path of the file along with an xlsx extension: <your_input>
