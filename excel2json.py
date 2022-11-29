@@ -70,7 +70,7 @@ def count_processed_data(final_data, save_file_path):
 
     write_data_to_json(final_data, processed_count, save_file_path)
     
-def processing_final_object(key_name, category_item, current_row_data, categories_object):
+def processing_final_object(key_name, category_type, category_item, current_row_data, categories_object):
     # Filling the object data and then adding it to the final object
     category_item["rating"] = current_row_data[2]
     category_item["feedback"] = current_row_data[4].replace("\n", " ")
@@ -118,7 +118,7 @@ def process_unique_entry(array_data, save_file_path):
                 for keyword in categories.categories[key]:
                     if keyword.lower() in word.lower():
                         found = True
-                        processing_final_object(key, category_item, current_row_data, categories_object)
+                        processing_final_object(key, category_type, category_item, current_row_data, categories_object)
                         
                         break
                 # Main idea is to push the sentence and move to next sentence immediately
@@ -128,7 +128,7 @@ def process_unique_entry(array_data, save_file_path):
 
         # Pushing to junk. No word in sentence found in any category
         if not found:
-            processing_final_object(key_junk, category_item, current_row_data, categories_object)
+            processing_final_object(key_junk, category_type, category_item, current_row_data, categories_object)
 
     count_processed_data(categories_object, save_file_path)
 
