@@ -30,7 +30,7 @@ def write_data_to_json(final_data_object, processed_count, save_file_path):
     
     print("Process success ✅")
     print(f"We've successfully categorised {processed_count} feedbacks from the provided sheet 🙂")
-    print(f"Please check the Final-Sheet.xlsx file in {save_file_path} directory 📁")
+    print(f"Please check the Final-Data.json file in {save_file_path} directory 📁")
 
 def count_processed_data(final_data, save_file_path):
     processed_count = 0                  
