@@ -91,7 +91,7 @@ There are two aspects of the project, these are:
 
 ### Excel To Excel
 
-When you will the run the project, irrespective of the below cases, you will be asked the below questions. Please provide the right details, failing which, the program will exit it abruptly.
+- When you will the run the project, irrespective of the below cases, you will be asked the below questions. Please provide the right details, failing which, the program will exit it abruptly.
 
 ```terminal
 Do you need the resultant sheet with duplicate records solution (Y/N): <your_input>
@@ -101,7 +101,8 @@ Please enter the full path where you want to save the result sheet: <your_input>
 
 ### Excel to JSON
 
-When you will the run the project, irrespective of the below cases, you will be asked the below questions. Please provide the right details, failing which, the program will exit it abruptly.
+- When you will the run the project, irrespective of the below cases, you will be asked the below questions. Please provide the right details, failing which, the program will exit it abruptly.
+- To best utilise the potential of the program, make sure your columns are in an absolute sequence harmony per different files. Else, you will get varied outputs in the key present inside the above shown output.
 
 ```terminal
 Please enter the full path of the file along with an xlsx extension: <your_input>
@@ -157,7 +158,6 @@ Supply Chain
 ### Excel to JSON
 
 - On succesfull completion of the task, you will have the file named **Final-Data.json** stored in the provided path
-- To best utilise the potential of the program, make sure your columns are in an absolute sequence harmony per different files. Else, you will get varied outputs in the key present inside the above shown output.
 - You will also see set of interactive messages coming in your terminal like below:
 
 ```
