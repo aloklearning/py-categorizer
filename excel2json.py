@@ -3,18 +3,39 @@ This is an advanced version of the main.py project. It will have the results
 stored in the JSON file with a format like this
 
 {
-    "category_one": [
-        {
-            "data_1": "",
-            "data_2": ""
-        }
-    ],
-    "category_two": [
-        {
-            "data_1": "",
-            "data_2": ""
-        }
-    ]
+    "category_one": {
+        "promoters": [
+            {
+                "data_1": "",
+                "data_2": "",
+                ...
+            }
+        ],
+        "passive": [
+            {
+                "data_1": "",
+                "data_2": "",
+                ...
+            }
+        ],
+        "detractors": [
+            {
+                "data_1": "",
+                "data_2": "",
+                ...
+            }
+        ]
+    },
+    "category_two": {
+         "promoters": [
+            {
+                "data_1": "",
+                "data_2": "",
+                ...
+            }
+        ]
+        ...
+    }
     ...
 }
 '''
@@ -33,14 +54,19 @@ def write_data_to_json(final_data_object, processed_count, save_file_path):
 
     print("Here is the summary of the items we have per each category:\n")
     for index, categoryKey in enumerate(final_data_object):
-        print(f"{index+1}. {categoryKey} has {len(final_data_object[categoryKey])} items", end="\n")
+        total_count = 0
+        
+        for type_values in final_data_object[categoryKey].values():
+            total_count += len(type_values)
+        print(f"{index+1}. {categoryKey} has {total_count} items", end="\n")
 
     print(f"\nPlease check the Final-Data.json file in {save_file_path} directory 📁")
 
 def count_processed_data(final_data, save_file_path):
     processed_count = 0                  
     for key in final_data:
-        processed_count += len(final_data[key])
+        for values in final_data[key].values():
+            processed_count += len(values)
 
     write_data_to_json(final_data, processed_count, save_file_path)
     
@@ -50,6 +76,7 @@ def process_unique_entry(array_data, save_file_path):
 
     for index, _ in enumerate(array_data):
         found = False
+        category_type = ""
         category_item = {}
 
         # 1 -> Project fails when we have something other than string
@@ -76,11 +103,21 @@ def process_unique_entry(array_data, save_file_path):
                         category_item["user_name"] = current_row_data[15]
                         category_item["user_email"] = current_row_data[16]
 
-                        if key in categories_object:
-                            if category_item not in categories_object[key]:
-                                categories_object[key].append(category_item)
+                        if category_item["rating"] >= 9 and category_item["rating"] <= 10: 
+                            category_type = "promoters"
+                        elif category_item["rating"] >= 7 and category_item["rating"] <= 8: 
+                            category_type = "passive"
                         else:
-                            categories_object[key] = [category_item]
+                            category_type = "detractors"
+
+                        if key in categories_object:
+                            if category_type in categories_object[key]:
+                                if category_item not in categories_object[key][category_type]:
+                                    categories_object[key][category_type].append(category_item)
+                            else:
+                                categories_object[key][category_type] = [category_item]
+                        else:
+                            categories_object[key] = {category_type: [category_item]}
                         break
                 # Main idea is to push the sentence and move to next sentence immediately
                 if found: break
@@ -96,12 +133,22 @@ def process_unique_entry(array_data, save_file_path):
             category_item["user_country_code"] = current_row_data[11]
             category_item["user_name"] = current_row_data[15]
             category_item["user_email"] = current_row_data[16]
+
+            if category_item["rating"] >= 9 and category_item["rating"] <= 10: 
+                category_type = "promoters"
+            elif category_item["rating"] >= 7 and category_item["rating"] <= 8: 
+                category_type = "passive"
+            else:
+                category_type = "detractors"
             
             if key_junk in categories_object:
-                if category_item not in categories_object[key_junk]:
-                    categories_object[key_junk].append(category_item)
+                if category_type in categories_object[key_junk]:
+                    if category_item not in categories_object[key_junk][category_type]:
+                        categories_object[key_junk][category_type].append(category_item)
+                else:
+                    categories_object[key_junk][category_type] = [category_item]
             else:
-                categories_object[key_junk] = [category_item]
+                categories_object[key_junk] = {category_type: [category_item]}
 
     count_processed_data(categories_object, save_file_path)
 
