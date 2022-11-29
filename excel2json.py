@@ -32,8 +32,8 @@ def write_data_to_json(final_data_object, processed_count, save_file_path):
     print(f"We've successfully categorised {processed_count} feedbacks from the provided sheet 🙂")
 
     print("Here is the summary of the items we have per each category:\n")
-    for categoryKey in final_data_object:
-        print(f"{categoryKey}, has {len(final_data_object[categoryKey])}", end="\n")
+    for index, categoryKey in enumerate(final_data_object):
+        print(f"{index+1}. {categoryKey} has {len(final_data_object[categoryKey])} items", end="\n")
 
     print(f"\nPlease check the Final-Data.json file in {save_file_path} directory 📁")
 
