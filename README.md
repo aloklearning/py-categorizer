@@ -44,7 +44,52 @@ python3 -m PyInstaller --onefile main.py
 
 > Please keep on running the above command with each update in the `main.py` file.
 
-## Run Project
+## Running the Project
+
+There are two aspects of the project, these are:
+- **Excel to Excel:** This one categorieses the feedback from the `English` column only of the provided sheet, and generates an excel.
+- **Excel to JSON:** This one is a bit sophosticates and more categorised process. This one taken an excel and categorises them in this manner with a JSON file generated at the end of the process:
+
+```json
+{
+    "category_one": {
+        "promoters": [
+            {
+                "data_1": "",
+                "data_2": "",
+                ...
+            }
+        ],
+        "passive": [
+            {
+                "data_1": "",
+                "data_2": "",
+                ...
+            }
+        ],
+        "detractors": [
+            {
+                "data_1": "",
+                "data_2": "",
+                ...
+            }
+        ]
+    },
+    "category_two": {
+         "promoters": [
+            {
+                "data_1": "",
+                "data_2": "",
+                ...
+            }
+        ]
+        ...
+    }
+    ...
+}
+```
+
+### Excel To Excel
 
 When you will the run the project, irrespective of the below cases, you will be asked the below questions. Please provide the right details, failing which, the program will exit it abruptly.
 
@@ -54,12 +99,16 @@ Please enter the full path of the file along with an xlsx extension: <your_input
 Please enter the full path where you want to save the result sheet: <your_input>
 ```
 
-### Normal Run Via Main.Py
-- To install the packages in python, we use `pip/pip3`. Make sure it is installed and then you just use the below command to install the packages
+### Excel to JSON
 
-```python
-pip3 install <package-name>
+When you will the run the project, irrespective of the below cases, you will be asked the below questions. Please provide the right details, failing which, the program will exit it abruptly.
+
+```terminal
+Please enter the full path of the file along with an xlsx extension: <your_input>
+Please enter the full path where you want to save the result sheet: <your_input>
 ```
+
+### Normal Run Via Terminal
 
 - To run the project simply get inside the directory via terminal and run the following command
 
@@ -70,13 +119,22 @@ pip3 install <package-name>
 python3 main.py
 ```
 
-### Run Via Executable File
+### Installing the Package
+- To install the packages in python, we use `pip/pip3`. Make sure it is installed and then you just use the below command to install the packages
+
+```python
+pip3 install <package-name>
+```
+
+### Runnig via Executable File
 
 - Double click on the provided executable file, and provide the details required to perform the operation
 
 ## Output
 
-### Running Normally python3 main.py
+### Excel to Excel
+
+**Running Normally python3 main.py**
 - On succesfull completion of the task, you will have the file named **Final-Sheet.xlsx** stored in the provided path
 - You will also see set of interactive messages coming in your terminal like below:
 
@@ -88,9 +146,6 @@ We've successfully categorised 129 feedbacks from the provided sheet 🙂
 Please check the Final-Sheet.xlsx file in <your_provided_path> directory 📁
 ```
 
-### Running Executable File
-- This file will take few seconds to run, as it installs everything at your disposal, and help you get the results
-
 > This output will come in your terminal/console, when the machine was not able to find any words which was matching a category, hence, the category was not added. This is irrespetive of which path you choose to run the project
 
 ```
@@ -98,6 +153,28 @@ We were unable to add these categories due to other categories priority preceden
 Generic Negative
 Supply Chain
 ```
+
+### Excel to JSON
+
+- On succesfull completion of the task, you will have the file named **Final-Data.json** stored in the provided path
+- You will also see set of interactive messages coming in your terminal like below:
+
+```
+Work in progress. Have some coffee ☕
+Processing 395 feedbacks...
+Process success ✅
+We've successfully categorised 395 feedbacks from the provided sheet 🙂
+Here is the summary of the items we have per each category:
+
+1. Service Related has 46 items
+2. Junk has 108 items
+....
+
+Please check the Final-Data.json file in /Users/alok.kumar/Documents/py-categorizer directory 📁
+```
+
+### Running Executable File
+- This file will take few seconds to run, as it installs everything at your disposal, and help you get the results
 
 ## Future Prospects
 
@@ -137,7 +214,6 @@ Should you require to add more categories, for the machine to give a more robust
     ```
 
 Run the project, if everything goes well, you will be able to see the results in a form of final sheet in your directory. Enjoy!
-
 
 ## Links
 
