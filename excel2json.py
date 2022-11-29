@@ -53,7 +53,7 @@ for index, _ in enumerate(feedbacks_array_data):
 
                     # Filling the object data and then adding it to the final object
                     category_item["rating"] = current_row_data[2]
-                    category_item["feedback"] = current_row_data[4]
+                    category_item["feedback"] = current_row_data[4].replace("\n", " ")
                     category_item["method"] = current_row_data[5]
                     category_item["user_country_code"] = current_row_data[11]
                     category_item["user_name"] = current_row_data[15]
@@ -74,7 +74,7 @@ for index, _ in enumerate(feedbacks_array_data):
         if not found:
             # Filling the object data and then adding it to the final object
             category_item["rating"] = current_row_data[2]
-            category_item["feedback"] = current_row_data[4]
+            category_item["feedback"] = current_row_data[4].replace("\n", " ")
             category_item["method"] = current_row_data[5]
             category_item["user_country_code"] = current_row_data[11]
             category_item["user_name"] = current_row_data[15]
