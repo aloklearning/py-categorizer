@@ -24,13 +24,21 @@ import pandas as pd
 
 key_junk = "Junk"
 
-def write_data_to_json(final_data_object, save_file_path):
+def write_data_to_json(final_data_object, processed_count, save_file_path):
     with open(f'{save_file_path}/Final-Data.json', 'w', encoding='utf-8') as f:
         json.dump(final_data_object, f, ensure_ascii=False, indent=4)
     
     print("Process success ✅")
-    print(f"We've successfully categorised feedbacks from the provided sheet 🙂")
+    print(f"We've successfully categorised {processed_count} feedbacks from the provided sheet 🙂")
     print(f"Please check the Final-Sheet.xlsx file in {save_file_path} directory 📁")
+
+def count_processed_data(final_data, save_file_path):
+    processed_count = 0                  
+    for key in final_data:
+        processed_count += len(final_data[key])
+
+    write_data_to_json(final_data, processed_count, save_file_path)
+    
 
 def process_unique_entry(array_data, save_file_path):
     categories_object = {}
@@ -90,7 +98,7 @@ def process_unique_entry(array_data, save_file_path):
             else:
                 categories_object[key_junk] = [category_item]
 
-    write_data_to_json(categories_object, save_file_path)
+    count_processed_data(categories_object, save_file_path)
 
 def process_input_data():
     user_input_file = input("Please enter the full path of the file along with an xlsx extension: ")
