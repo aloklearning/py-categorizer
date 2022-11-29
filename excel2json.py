@@ -70,21 +70,21 @@ for index, _ in enumerate(feedbacks_array_data):
         # Breaks word loop
         if found: break
 
-        # Pushing to junk. No word in sentence found in any category
-        if not found:
-            # Filling the object data and then adding it to the final object
-            category_item["rating"] = current_row_data[2]
-            category_item["feedback"] = current_row_data[4].replace("\n", " ")
-            category_item["method"] = current_row_data[5]
-            category_item["user_country_code"] = current_row_data[11]
-            category_item["user_name"] = current_row_data[15]
-            category_item["user_email"] = current_row_data[16]
-            
-            if key in categories_object:
-                if category_item not in categories_object[key]:
-                    categories_object[key].append(category_item)
-            else:
-                categories_object[key] = [category_item]
+    # Pushing to junk. No word in sentence found in any category
+    if not found:
+        # Filling the object data and then adding it to the final object
+        category_item["rating"] = current_row_data[2]
+        category_item["feedback"] = current_row_data[4].replace("\n", " ")
+        category_item["method"] = current_row_data[5]
+        category_item["user_country_code"] = current_row_data[11]
+        category_item["user_name"] = current_row_data[15]
+        category_item["user_email"] = current_row_data[16]
+        
+        if key_junk in categories_object:
+            if category_item not in categories_object[key_junk]:
+                categories_object[key_junk].append(category_item)
+        else:
+            categories_object[key_junk] = [category_item]
 
 # Writing the data to JSON
 with open('Final-Data.json', 'w', encoding='utf-8') as f:
