@@ -4,9 +4,9 @@
 [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![build](https://img.shields.io/appveyor/build/gruntjs/grunt)](https://pub.dev/packages/flutter_bounce#-analysis-tab-)
 
-- This project is a scripting project which is made to automate the process of categorising different sets of feedbacks we receive from people.
-- The project can either store unique feedbacks per category or can have same feedbacks in multiple categories based upon the relevant keywords satisfying different categories.
-- This solves the basic needs and in no way a very advanced version, which can work like Machine Learning project. 
+- This project is a scripting project which is made to automate the process of categorizing different sets of feedback we receive from people.
+- The project can either store unique feedback per category or can have the same feedback in multiple categories based on the relevant keywords satisfying different categories.
+- This solves the basic needs and is in no way a very advanced version, which can work like a Machine Learning project.
 - This project will keep on improving with given more data in respect of keywords and categories.
 
 ## Motivation
